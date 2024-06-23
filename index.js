@@ -45,6 +45,15 @@ app.post('/send-email', (req, res) => {
     html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Phone: ${phone}</p><p>Message: ${message}</p>`, // HTML body
   };
 
+  mailOptions.to = 'petindiaindustries@gmail.com';
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return res
+        .status(500)
+        .send({ success: false, message: 'Failed to send email', error });
+    }
+  });
+
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return res
@@ -53,16 +62,6 @@ app.post('/send-email', (req, res) => {
     }
     res.send({ success: true, message: 'Email sent successfully', info });
   });
-
-  // mailOptions.to = 'petindiaindustries.com';
-  // transporter.sendMail(mailOptions, (error, info) => {
-  //   if (error) {
-  //     return res
-  //       .status(500)
-  //       .send({ success: false, message: 'Failed to send email', error });
-  //   }
-  //   res.send({ success: true, message: 'Email sent successfully', info });
-  // });
 });
 
 app.listen(port, () => {
