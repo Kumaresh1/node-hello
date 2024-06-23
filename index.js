@@ -38,22 +38,22 @@ app.post('/send-email', (req, res) => {
 
   const mailOptions = {
     from: fromEmail,
-    to: 'kumaresh12012@gmail.com',
-    // to: 'petindiaindustries.com',
+    to: 'nithitharajsingh@gmail.com',
     subject: subject || 'New Contact Form Submission',
     text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`, // Plain text body
     html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Phone: ${phone}</p><p>Message: ${message}</p>`, // HTML body
   };
 
-  mailOptions.to = 'petindiaindustries@gmail.com';
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return res
         .status(500)
         .send({ success: false, message: 'Failed to send email', error });
     }
+    res.send({ success: true, message: 'Email sent successfully', info });
   });
 
+  mailOptions.to = 'petindiaindustries@gmail.com';
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return res
