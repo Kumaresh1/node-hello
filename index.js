@@ -24,12 +24,12 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-const fromEmail = 'alerts.toeatz@gmail.com';
+const fromEmail = 'mailreceivedtoday@gmail.com';
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: fromEmail,
-    pass: 'nyqj aknn ggcg hpnw',
+    pass: 'dnjh wauk knhd dnmh',
   },
 });
 
